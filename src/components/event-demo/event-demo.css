@@ -1,0 +1,8 @@
+
+.thumb-nail {
+    border:2px solid gray;
+}
+.thumb-nail:hover {
+    border: 2px solid blue;
+    cursor: grab;
+}
