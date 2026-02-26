@@ -34,11 +34,16 @@ import { ShoppingIndex } from './shopping/shopping-index.jsx'
 import { CookiesProvider } from 'react-cookie'
 import { RouterProvider } from 'react-router-dom'
 import { router } from './routes/routes.jsx'
+import { MUIDemo } from './components/mui-demo/mui-demo.jsx'
+import { LocalizationProvider } from '@mui/x-date-pickers'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 createRoot(document.getElementById('root')).render(
   
     <CookiesProvider>
-        <RouterProvider router={router} ></RouterProvider>
+       <LocalizationProvider dateAdapter={AdapterDayjs}>
+         <MUIDemo />
+       </LocalizationProvider>
     </CookiesProvider>
   
 )
