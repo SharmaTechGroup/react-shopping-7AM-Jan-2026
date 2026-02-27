@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": "c5fb",
+      "user_id": "sam_nit",
+      "user_name": "Samson",
+      "password": "sam11",
+      "email": "sam@gmail.com"
+    }
+  ],
+  "appointments": []
+}
