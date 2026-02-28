@@ -1,12 +1,12 @@
 import axios from "axios"
 import { useFormik } from "formik"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
-export function TodoRegister(){
+export function TodoRegister(props){
 
 
-    let naviagte = useNavigate();
+    let navigate = useNavigate();
 
     const formik = useFormik({
         initialValues: {
@@ -21,13 +21,14 @@ export function TodoRegister(){
                   console.log('registered..');
              })
              alert('Registered Successfully..');
-             naviagte('/');
+             navigate('/login');
         }
     })
 
     return(
-        <div>
-            <form onSubmit={formik.handleSubmit}>
+        <div className={props.align}>
+            <form className={props.width} onSubmit={formik.handleSubmit}>
+                <h3>Register User</h3>
                 <dl>
                     <dt>User Id</dt>
                     <dd><input type="text" onChange={formik.handleChange} name="user_id" className="form-control" /></dd>
@@ -39,6 +40,9 @@ export function TodoRegister(){
                     <dd><input type="email" onChange={formik.handleChange} name="email" className="form-control" /></dd>
                 </dl>
                 <button  type="submit" className="btn btn-primary w-100">Register</button>
+                <div className="mt-3">
+                    <Link to="/login">Have Account?</Link>
+                </div>
             </form>
         </div>
     )

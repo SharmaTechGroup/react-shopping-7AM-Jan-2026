@@ -6,7 +6,33 @@
       "user_name": "Samson",
       "password": "sam11",
       "email": "sam@gmail.com"
+    },
+    {
+      "id": "fd85",
+      "user_id": "david_nit",
+      "user_name": "David",
+      "password": "david",
+      "email": "david@gmail.com"
     }
   ],
-  "appointments": []
+  "appointments": [
+      {
+         "title": "meeting",
+         "description": "meeting with client",
+         "date": "2026-03-02",
+         "user_id": "david_nit"
+      },
+       {
+         "title": "birthday",
+         "description": "party",
+         "date": "2026-03-10",
+         "user_id": "david_nit"
+      },
+       {
+         "title": "React class",
+         "description": "Attend",
+         "date": "2026-03-01",
+         "user_id": "sam_nit"
+      }
+  ]
 }
