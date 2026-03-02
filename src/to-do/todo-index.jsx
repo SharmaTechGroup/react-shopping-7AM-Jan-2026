@@ -5,6 +5,9 @@ import { TodoRegister } from "./todo-register";
 import { ToDoDashboard } from "./todo-dashboard";
 import { useCookies } from "react-cookie";
 import { useEffect } from "react";
+import { ToDoAppointmentDetails } from "./todo-appointment-details";
+import { ToDoAddAppointment } from "./todo-add-appointment";
+import { ToDoEditAppointment } from "./todo-edit-appointment";
 
 
 export function ToDoIndex(){
@@ -33,7 +36,12 @@ export function ToDoIndex(){
                          <Route path="/" element={<ToDoHome />} />
                          <Route path="login" element={<TodoLogin width='w-25' align='d-flex justify-content-center mt-4'/>} />
                          <Route path="register" element={<TodoRegister width='w-25' align='d-flex justify-content-center mt-4' />} />
-                         <Route path="dashboard" element={<ToDoDashboard />} />
+                         <Route path="dashboard" element={<ToDoDashboard />} >
+                             <Route index element={<ToDoAppointmentDetails />} /> 
+                             <Route path="details" element={<ToDoAppointmentDetails />} />
+                             <Route path="add-appointment" element={<ToDoAddAppointment />} />
+                             <Route path="edit-appointment/:id" element={<ToDoEditAppointment />} />
+                         </Route>
                     </Routes>
                  </section>
             </BrowserRouter>

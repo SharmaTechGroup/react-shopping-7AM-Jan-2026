@@ -2,13 +2,15 @@ import axios from "axios";
 import moment from "moment/moment";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie"
-import { useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 
 export function ToDoDashboard(){
 
     const [cookies, setCookie, removeCookie] = useCookies(['user_id','user_name']);
-    const [appointments, setAppointments] = useState([{title:null, description:null, date:new Date(), user_id:null}]);
+    const [getString , setString] = useState('');
+    const [sendString, setSendString] = useState('');
+    
     let navigate = useNavigate();
 
     function handleSignout(){
@@ -17,17 +19,16 @@ export function ToDoDashboard(){
         navigate('/');
     }
 
-    function LoadAppointments(){
-        axios.get(`http://localhost:3000/appointments`)
-        .then(response=>{
-             let records = response.data.filter(appointment=> appointment.user_id===cookies['user_id']);
-             setAppointments(records);
-        })
+    function GetSearchString(e){
+        setString(e.target.value);
+    }
+    function SendSearchString(){
+        setSendString(getString);
     }
 
     useEffect(()=>{
 
-        LoadAppointments();
+        
 
     },[])
 
@@ -57,12 +58,12 @@ export function ToDoDashboard(){
                     </div>
                     <div>
                         <div className="input-group">
-                            <input className="form-control" type="text" placeholder="Search appointments" />
-                            <button className="btn btn-dark bi bi-search"></button>
+                            <input onChange={GetSearchString} className="form-control" type="text" placeholder="Search appointments" />
+                            <button onClick={SendSearchString} className="btn btn-dark bi bi-search"></button>
                         </div>
                     </div>
                     <div>
-                        <button className="btn btn-primary mx-2 bi bi-calendar-date-fill"> New Appointment</button>
+                        <Link to="add-appointment" className="btn btn-primary mx-2 bi bi-calendar-date-fill"> New Appointment</Link>
                         <button onClick={handleSignout} className="btn btn-link bi bi-person text-decoration-none"> Signout</button>
                     </div>
                 </div>
@@ -85,27 +86,7 @@ export function ToDoDashboard(){
                     </div>
                 </div>
                 <div className="mt-4">
-                    <table className="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                appointments.map(appointment=>
-                                    <tr key={appointment.title}>
-                                        <td>{appointment.title}</td>
-                                        <td>{appointment.description}</td>
-                                        <td>{moment(appointment.date).format('dddd MMMM yyyy')}</td>
-                                    </tr>
-                                )
-                            }
-                        </tbody>
-                    </table>
+                     <Outlet context={sendString} />
                 </div>
             </div>
         </div>
