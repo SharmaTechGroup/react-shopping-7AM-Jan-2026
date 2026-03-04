@@ -3,11 +3,13 @@ import { useFormik } from "formik";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import { useCaptcha } from "../hooks/use-captcha";
 
 export function TodoLogin(props){
 
 
     let navigate = useNavigate();
+    let code = useCaptcha();
     const [cookies, setCookie, removeCookie] = useCookies(['user_id', 'user_name']);
 
     const formik = useFormik({
@@ -46,7 +48,8 @@ export function TodoLogin(props){
                    
                     <dt>Password</dt>
                     <dd><input type="password" onChange={formik.handleChange} name="password" className="form-control" /></dd>
-                  
+                    <dt>Verify Code</dt>
+                    <dd>{code}</dd>
                 </dl>
                 <button type="submit" className="btn btn-primary w-100">Login</button>
                 <div className="mt-3">

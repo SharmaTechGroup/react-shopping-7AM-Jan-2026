@@ -38,12 +38,13 @@ import { MUIDemo } from './components/mui-demo/mui-demo.jsx'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { ToDoIndex } from './to-do/todo-index.jsx'
+import { HookDemo } from './components/hook-demo/hook-demo.jsx'
 
 createRoot(document.getElementById('root')).render(
   
     <CookiesProvider>
        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <ToDoIndex />
+          <HookDemo />
        </LocalizationProvider>
     </CookiesProvider>
   
