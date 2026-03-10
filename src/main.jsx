@@ -39,12 +39,18 @@ import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { ToDoIndex } from './to-do/todo-index.jsx'
 import { HookDemo } from './components/hook-demo/hook-demo.jsx'
+import { EffectDemo } from './components/effect-demo/effect-demo.jsx'
+import { VideoLive } from './components/video-live/video-live.jsx'
+import { Provider } from 'react-redux'
+import store from './store/store.jsx'
 
 createRoot(document.getElementById('root')).render(
-  
+    
     <CookiesProvider>
        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <HookDemo />
+          <Provider store={store}>
+            <ToDoIndex />
+          </Provider>
        </LocalizationProvider>
     </CookiesProvider>
   

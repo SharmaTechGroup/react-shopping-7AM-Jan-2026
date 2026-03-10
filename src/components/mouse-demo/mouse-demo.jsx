@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import './mouse-demo.css';
 
 export function MouseDemo(){
@@ -12,7 +12,6 @@ export function MouseDemo(){
     function handleMouseUp(){
         setAnimation({animationName:'Spin', animationDuration:'5s', animationTimingFunction:'linear', animationIterationCount:'infinite'});
     }
-
 
     return(
         <div className="d-flex justify-content-center align-items-center" style={{height:'100vh'}}>

@@ -9,7 +9,6 @@ export function TodoLogin(props){
 
 
     let navigate = useNavigate();
-    let code = useCaptcha();
     const [cookies, setCookie, removeCookie] = useCookies(['user_id', 'user_name']);
 
     const formik = useFormik({
@@ -48,8 +47,7 @@ export function TodoLogin(props){
                    
                     <dt>Password</dt>
                     <dd><input type="password" onChange={formik.handleChange} name="password" className="form-control" /></dd>
-                    <dt>Verify Code</dt>
-                    <dd>{code}</dd>
+                
                 </dl>
                 <button type="submit" className="btn btn-primary w-100">Login</button>
                 <div className="mt-3">

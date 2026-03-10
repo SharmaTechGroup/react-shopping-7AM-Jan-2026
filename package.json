@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.8",
     "@mui/x-date-pickers": "^8.27.2",
+    "@reduxjs/toolkit": "^2.11.2",
     "axios": "^1.13.4",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
@@ -26,6 +27,7 @@
     "react-cookie": "^8.0.1",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.71.1",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.0",
     "yup": "^1.7.1"
   },

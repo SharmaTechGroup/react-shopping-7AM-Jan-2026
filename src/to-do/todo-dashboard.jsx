@@ -3,6 +3,7 @@ import moment from "moment/moment";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie"
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import store from "../store/store";
 
 
 export function ToDoDashboard(){
@@ -30,7 +31,7 @@ export function ToDoDashboard(){
 
         
 
-    },[])
+    },[store])
 
     return(
         <div className="row mt-4 ps-3">
@@ -82,7 +83,18 @@ export function ToDoDashboard(){
                         </div>
                     </div>
                     <div>
-                        <span>Count</span>
+                        <button data-bs-target="#shared" data-bs-toggle="offcanvas" className="btn btn-primary position-relative"> <span className="bi bi-share-fill"> <span className="badge bg-dark rounded rounded-circle position-absolute"> {store.getState().sharedAppointmentsCount}</span></span> </button>
+                        <div className="offcanvas offcanvas-end" id="shared">
+                            <div className="offcanvas-header">
+                                <h4>Shared Appointments</h4>
+                                <button className="btn btn-close" data-bs-dismiss="offcanvas"></button>
+                            </div>
+                            <div className="offcanvas-body">
+                                {
+                                    store.getState().sharedAppointments.map(appointment=><div className="my-2" key={appointment.id}>{appointment.title} [{appointment.user_id}]</div>)
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="mt-4">
