@@ -43,6 +43,7 @@ import { EffectDemo } from './components/effect-demo/effect-demo.jsx'
 import { VideoLive } from './components/video-live/video-live.jsx'
 import { Provider } from 'react-redux'
 import store from './store/store.jsx'
+import { AdminLogin } from './class-components/admin-login.jsx'
 
 createRoot(document.getElementById('root')).render(
     
